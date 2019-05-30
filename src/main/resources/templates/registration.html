@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Pick n Pay Online Shopping | Welcome! Start Filling Your Trolley | Sign In & Sign Up</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Grocery Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all" />
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all" />
+<!-- font-awesome icons -->
+<link href="css/font-awesome.css" rel="stylesheet" type="text/css" media="all" /> 
+<!-- //font-awesome icons -->
+<!-- js -->
+<script th:src="@{/js/jquery-1.11.1.min.js}"></script>
+<!-- //js -->
+<link href='//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="@{/js/move-top.js}"></script>
+<script type="text/javascript" src="@{/js/easing.js}"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- start-smoth-scrolling -->
+</head>
+
+    <style>
+.break { page-break-before: always;color: #FABE58; }
+</style>
+   
+<body  >
+<!-- header -->
+	<div class="agileits_header">
+		
+		
+		<div class="clearfix"> </div>
+	</div>
+<!-- script-for sticky-nav -->
+	<script>
+	$(document).ready(function() {
+		 var navoffeset=$(".agileits_header").offset().top;
+		 $(window).scroll(function(){
+			var scrollpos=$(window).scrollTop(); 
+			if(scrollpos >=navoffeset){
+				$(".agileits_header").addClass("fixed");
+			}else{
+				$(".agileits_header").removeClass("fixed");
+			}
+		 });
+		 
+	});
+	</script>
+<!-- //script-for sticky-nav -->
+	<div class="logo_products">
+		<div class="container">
+			<div class="w3ls_logo_products_left">
+				<h1><a href="index.html"><img src="images/pnplogo.png" alt="Pick n Pay"></a></h1>
+			</div>
+			
+			<div  style="top: 0px; position : sticky " align = "right">
+ 
+      <form th:action="@{/login}" method="get">
+		<button class="btn btn-md btn-danger" type="Submit">Login</button>
+	</form>	
+      </div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+<!-- //header -->
+<!-- products-breadcrumb -->
+	<div class="products-breadcrumb">
+		<div class="container">
+			<ul>
+				<li><i class="fa fa-home" aria-hidden="true"></i><a href="#">Home</a><span>|</span></li>
+				<li>Sign Up</li>
+			</ul>
+		</div>
+	</div>
+<!-- //products-breadcrumb -->
+
+   <div class="w3_login">
+		<h3>Sign Up</h3>
+		</div>
+		
+	<div class="w3_login_module">
+	
+				<div class="module form-module">
+				
+				   <div class="toggle"><i class="fa fa-times fa-pencil"></i>
+				   </div>
+				  <div class="form">
+				  
+					<h2>Register for Pick n Pay Online</h2>
+					<form autocomplete="off" action="#" th:action="@{/registration}"
+					th:object="${user}" method="post" >
+					
+					  <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+								class="validation-message"></label>
+						<input type="text" th:field="*{name}" placeholder="Name"
+								class="form-control" /> 
+								
+					  <label	th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+								class="validation-message"></label>
+							<input type="text" th:field="*{lastName}"
+								placeholder="Last Name" class="form-control" />
+								
+					  <input type="text" th:field="*{email}" placeholder="Email"
+								class="form-control" /> <label
+								th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+								class="validation-message"></label>
+								
+					  
+					  
+					  <input type="password" th:field="*{password}"
+								placeholder="Password" class="form-control" /> <label
+								th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+								class="validation-message"></label>
+								
+					  
+					  <input type="submit" value="Register">
+
+					</form>
+				  </div>
+				  
+				</div>
+			</div>	
+
+</body>
+</html>

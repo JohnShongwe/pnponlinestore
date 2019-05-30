@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Pick n Pay | Trolley</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/tab.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<link th:if="${mode == 'development'}" rel="stylesheet"
+	href="../static/bootstrap.css" th:href="@{/bootstrap.css}" />
+<link th:if="${mode == 'production'}" rel="stylesheet"
+	href="../static/bootstrap.min.css" th:href="@{/bootstrap.min.css}" />
+<script type="text/javascript" src="/static/angular.min.js"
+	th:src="@{/angular.min.js}"></script>
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>-->
+
+<script type="text/javascript">
+	"src/main/resources/static/app/bookings.controller.js"
+</script>
+<script type="text/javascript" src="/static/app/app.module.js"
+	th:src="@{/app/app.module.js}"></script>
+<script type="text/javascript" src="/static/app/bookings.controller.js"
+	th:src="@{/app/bookings.controller.js}"></script>
+
+
+
+<script type="text/javascript">
+	
+</script>
+
+<!-- New Head -->
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="pnp online shopping." />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+	<!-- //for-mobile-apps -->
+<link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all" />
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all" />
+
+	<!-- font-awesome icons -->
+<link th:href="@{/css/font-awesome.css}" rel="stylesheet" type="text/css" media="all" /> 
+
+	<!-- //font-awesome icons -->
+
+	<!-- js -->
+<script th:src="@{/js/jquery-1.11.1.min.js}"></script>
+
+	<!-- //js -->
+<link th:href='@{//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic}' rel='stylesheet' type='text/css'>
+<link th:href='@{//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic}' rel='stylesheet' type='text/css'>
+
+	<!-- start-smoth-scrolling -->
+<script type="text/javascript" th:src="@{/js/move-top.js}"></script>
+<script type="text/javascript" th:src="@{/js/easing.js}"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- start-smoth-scrolling --> 
+
+<!-- New Head End -->
+
+
+</head>
+
+
+
+<!--background="grocery.jpg" style="background-repeat: no-repeat; background-size: auto-->
+
+<body ng-app="myapp" ng-controller="myappcontroller" >
+
+	<!-- Header -->	
+<div class="agileits_header">
+		<div class="w3l_offers">
+			<a th:href="@{/customer/shop}">Start Shopping...</a>
+		</div>
+		<div class="w3l_search">
+			<form action="#" method="post">
+				<input type="text" name="Product" value="I'm looking for..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'I'm looking for...';}" ng-model = "searchProducts" required="">
+				
+			</form>
+		</div>
+		
+		<div class="w3l_header_right">
+			<span style="font-color:white;" th:utext="${userName}"></span>
+			<form th:action="@{/logout}" method="get">
+			<button class="btn btn-danger " name="registration"
+				type="Submit"  style="right: 0px; top: 30px;">Logout</button>
+		    </form>
+		</div>
+		<div class="w3l_header_right1">
+			<!--
+			<h2><a href="mail.html">Contact Us</a></h2>
+			-->
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+	<!-- script-for sticky-nav -->
+	<script>
+	$(document).ready(function() {
+		 var navoffeset=$(".agileits_header").offset().top;
+		 $(window).scroll(function(){
+			var scrollpos=$(window).scrollTop(); 
+			if(scrollpos >=navoffeset){
+				$(".agileits_header").addClass("fixed");
+			}else{
+				$(".agileits_header").removeClass("fixed");
+			}
+		 });
+		 
+	});
+	</script>
+<!-- //script-for sticky-nav -->
+	
+
+
+<div class="logo_products">
+		<div class="container">
+			<div class="w3ls_logo_products_left">
+				<h1><a href="/customer/home"><img th:src="@{/images/pnplogo.png}" alt="Pick n Pay"></a></h1>  
+			</div>
+			<div class="w3ls_logo_products_left1">
+				<ul class="special_items">
+					 <li><a href="/customer/shop">SPECIALS</a></li>
+                     <li><a href="/customer/browse">SHOP</a></li>
+  					 <li><a href="/customer/CustomerInfo">PROFILE</a></li>
+  					
+				</ul>
+			</div>
+			<div class="w3ls_logo_products_left1">
+				<ul class="phone_email">
+					<!--
+					<li><i class="fa fa-phone" aria-hidden="true"></i>(+0123) 234 567</li>
+					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:info@pnp.com">info@pnp.co.za</a></li>
+					-->
+				</ul>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+<!-- //header -->
+
+
+
+	<div align="center">
+		<h3>Your Trolley</h3>
+
+	</div>
+
+<!-- New Style -->
+<style>
+.container{
+  max-width: 1000px;
+}
+.table>thead>tr.names>th{
+  border-bottom: 1px;
+}
+.table>tbody>tr.item>td{
+  padding-bottom: 20px;
+  padding-top: 20px;
+  vertical-align: middle;
+}
+.table>tfoot>tr.no-border>td{
+  border-top: 0 none;
+  padding-top: 20px;
+}
+.img-product{
+  padding-top: 20px;
+}
+</style>
+<!-- New Style end -->
+
+<!-- New Table -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+	<table id="cart" class="table table-responsive">
+    				<thead>
+						<tr class="names">
+							<th style="width:30%">Product</th>
+              <!-- <th style="width:10%" class="text-right hidden-xs">Size</th> -->
+                            <th style="width:15%" class="text-left">Name</th> 
+			 				<!-- <th style="width:20%" class="text-left hidden-xs">Price</th> -->
+							<th style="width:25%" class="text-center">Quantity</th>
+							<th style="width:20%" class="text-right">Amount</th>
+							<th style="width:5%"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="item" ng-repeat="Cartproduct in Carts | filter: searchProducts">
+							<td><span><img src="{{ Cartproduct.user_image }}">
+					           </span></td>
+							<!--  -->
+               <td data-th="Size" class="text-left hidden-xs">{{ Cartproduct.product_name }}</td>
+							<td data-th="Price" class="text-right hidden-xs">{{ prod.productPrice}}</td>
+							<td data-th="Quantity" class="text-left">
+								{{ Cartproduct.quantity }}
+                <!-- <div class="btn-group" role="group" aria-label="...">
+                  <button type="button" class="btn btn-sm btn-default">-</button>
+                  <button type="button" class="btn btn-sm btn-default">+</button>
+                </div> -->
+							</td>
+							<td data-th="Subtotal" class="text-right">R{{ Cartproduct.price}}</td>
+							<td class="actions" data-th="">
+								<button ng-click="deleteCart(Cartproduct)" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>				
+							</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td></td>
+              <td class="hidden-xs" colspan="2"></td>
+              <td class="text-right">Total</td>
+							<td class="text-right"><strong>R{{totalAmount}}</strong></td>
+              <td></td>
+						</tr>
+            <tr class="no-border">
+              <td><a href="/customer/browse" class="btn btn-default "><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+              <td colspan="2" class="hidden-xs"></td>
+              <td></td>
+              <td colspan="2"><a href="/customer/checkout" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+            </tr>
+					</tfoot>
+				</table>
+</div>
+
+<!-- New Table end -->
+
+	<!-- <center>
+
+		<div class="container" style="background-color: lightblue">
+
+
+			<h3>CART</h3>
+
+			<table class="table table-info table-no" style="width: 1000px;">
+				<thead>
+					<tr>
+
+						<th>Product Image</th>
+						<th>Cart Name</th>
+						<th>Cart Quantity</th>
+						<th>Cart Price</th>
+					</tr>
+				</thead>
+				<tr ng-repeat="Cartproduct in Carts">
+					<td><span><img src="{{ Cartproduct.user_image }}">
+					</span></td>
+					<td>{{ Cartproduct.product_name }}</td>
+					<td>{{ Cartproduct.quantity }}</td>
+					<td>R{{ Cartproduct.price}}</td>
+
+					<td><a ng-click="deleteCart(Cartproduct)"
+						class="btn btn-danger btn-sm  ">Delete</a></td>
+
+				</tr>
+				<tr>
+					<td colspan="3">Total Amount</td>
+
+
+					<td>R{{totalAmount}}</td>
+				</tr>
+			</table>
+
+
+		</div>
+
+	</center>
+
+
+
+
+	<div>
+
+		<form>
+
+			<table>
+
+
+
+
+			</table>
+
+		</form>
+
+	</div> -->
+
+
+<!-- footer -->
+	<div class="footer">
+		<div class="container">
+			<div class="col-md-3 w3_footer_grid">
+				<h3>START SHOPPING</h3>
+				<ul class="w3_footer_grid_list">
+				   <li><a href="/customer/shop">SPECIALS</a></li>
+                     <li><a href="/customer/browse">SHOP</a></li>
+  					 <li><a href="/customer/CustomerInfo">PROFILE</a></li>
+  					 
+				</ul>
+			</div>
+			<div class="col-md-3 w3_footer_grid">
+				<h3>COMPANY</h3>
+				<ul class="w3_footer_grid_list">
+				    <li><a href="">FAQs</a></li>
+					<li><a href="">HELP</a></li>
+					<li><a href="">CONTACT US</a></li>
+					
+				</ul>
+			</div>
+			
+			
+			<div class="clearfix"> </div>
+			
+			<div class="wthree_footer_copy">
+				<p>© 2019 Pick n Pay All Rights Reserved | Online Shop Ts&Cs | Smart Shopper Ts&Cs | Privacy Policy | General Ts&Cs | Copyright | Returns Policy | CPA | Customer Communication | General Competition Ts&Cs</a></p>
+			</div>
+		</div>
+	</div>
+<!-- //footer -->
+<!-- Bootstrap Core JavaScript -->
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script>
+$(document).ready(function(){
+    $(".dropdown").hover(            
+        function() {
+            $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+            $(this).toggleClass('open');        
+        },
+        function() {
+            $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+            $(this).toggleClass('open');       
+        }
+    );
+});
+</script>
+<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+								
+			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+			});
+	</script>
+<!-- //here ends scrolling icon -->
+<script src="@{/js/minicart.js}"></script>
+<script>
+		paypal.minicart.render();
+
+		paypal.minicart.cart.on('checkout', function (evt) {
+			var items = this.items(),
+				len = items.length,
+				total = 0,
+				i;
+
+			// Count the number of each item in the cart
+			for (i = 0; i < len; i++) {
+				total += items[i].get('quantity');
+			}
+
+			if (total < 3) {
+				alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
+				evt.preventDefault();
+			}
+		});
+
+	</script>
+
+
+
+
+
+
+
+</body>
+
+
+</html>

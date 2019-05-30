@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Add Driver</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/tab.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+ <link th:if="${mode == 'development'}" rel="stylesheet" href="../static/bootstrap.css" th:href="@{/bootstrap.css}" />
+    <link th:if="${mode == 'production'}" rel="stylesheet" href="../static/bootstrap.min.css" th:href="@{/bootstrap.min.css}" />
+    <script type="text/javascript" src="/static/angular.min.js" th:src="@{/angular.min.js}"></script>
+     <!--  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>--> 
+     
+	<script type="text/javascript">"src/main/resources/static/app/bookings.controller.js"</script>  
+    <script type="text/javascript" src="/static/app/app.module.js" th:src="@{/app/app.module.js}"></script>
+    <script type="text/javascript" src="/static/app/bookings.controller.js" th:src="@{/app/bookings.controller.js}"></script>
+
+</head>
+
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: gray;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111111;
+}
+
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+
+<body ng-app="myapp" ng-controller="myappcontroller">
+
+	<div  style="margin-top:15px; background-color: #CF000F;color: #E4F1FE; position : sticky"  align = "right">
+					<span th:utext="${userName}"></span>
+						<form th:action="@{/logout}" method="get">
+			<button class="btn btn-danger " name="registration"
+				type="Submit"  style="right: 0px; top: 30px;">Logout</button>
+		</form>
+		
+				</div>	
+				
+	
+	<div>
+	
+	<a href="/Admin/home"> <img th:src="@{/images/logo.jpg}"  width="200" height="70" alt="logo  " /> </a>
+	 
+	</div>
+		  	
+	
+			  
+		
+	<div>
+	
+
+<ul>   
+
+  <li><a href="/Admin/products">Add Products</a></li>
+   <li><a href="/Admin/ProductCategory">Add Product Category</a></li>
+  
+ 
+</ul>
+
+<ul>
+
+<li>
+
+	<h3>ADD Driver</h3>
+	<form ng-submit="AddCategory">
+		<div class="table-responsive">
+			<table class="table table-bordered" style="width: 600px">
+			
+			
+				<tr>
+					<td>Driver Surname</td>
+					<td><input type="text" id="driverSurname"
+						ng-model="DriverForm.driverSurname" size="30" /></td>
+				</tr>
+                                <tr>
+					<td>Driver Name</td>
+					<td><input type="text" id="driverName"
+						ng-model="DriverForm.driverName" size="30" /></td>
+				</tr>
+
+
+				<tr>
+					<td colspan="2"><input type="submit"
+						class="btn btn-primary btn-sm" ng-click="AddDriver()"
+						value="Add/Update Driver"onClick="history.go(0)"/> </td>
+				</tr>
+
+		</table>
+		</div>
+	</form>
+	
+
+</li>
+
+
+
+<li> <a    >   </a>       </li>
+		<li><a    >   </a>       </li>
+		<li><a    >   </a>       </li>
+
+
+<li>
+
+<div>
+
+	<h3>Driver(s)</h3>
+<table class="table table-bordered" style="width: 200px;">
+		<tr>
+				<th>Driver Surname</th>
+				<th>Driver Name</th>
+				</tr>
+
+			<tr ng-repeat="Drivers in Driver">
+			<td>	{{ 	Drivers.driverSurname }}	 </td>
+				<td>{{ 	Drivers.driverName }}
+				
+				</td>
+				
+					<td><a ng-click="DeleteDriver(Drivers)" class="btn btn-danger btn-sm">Delete Driver</a>
+					</td>
+		     
+			</tr>
+		</table>
+
+</div>
+
+
+
+</li>
+
+
+</ul>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

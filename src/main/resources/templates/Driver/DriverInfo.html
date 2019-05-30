@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Driver Information</title>
+<!--  -->
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="pnp online shopping." />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+	<!-- //for-mobile-apps -->
+<link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all" />
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all" />
+
+	<!-- font-awesome icons -->
+<link th:href="@{/css/font-awesome.css}" rel="stylesheet" type="text/css" media="all" /> 
+
+	<!-- //font-awesome icons -->
+
+	<!-- js -->
+<script th:src="@{/js/jquery-1.11.1.min.js}"></script>
+
+	<!-- //js -->
+<link th:href='@{//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic}' rel='stylesheet' type='text/css'>
+<link th:href='@{//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic}' rel='stylesheet' type='text/css'>
+
+	<!-- start-smoth-scrolling -->
+<script type="text/javascript" th:src="@{/js/move-top.js}"></script>
+<script type="text/javascript" th:src="@{/js/easing.js}"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- start-smoth-scrolling --> 
+<!--  -->
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/tab.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<link th:if="${mode == 'development'}" rel="stylesheet" href="../static/bootstrap.css" th:href="@{/bootstrap.css}" />
+<link th:if="${mode == 'production'}" rel="stylesheet" href="../static/bootstrap.min.css" th:href="@{/bootstrap.min.css}" />
+<script type="text/javascript" src="/static/angular.min.js" th:src="@{/angular.min.js}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+     
+<script type="text/javascript">"src/main/resources/static/app/bookings.controller.js"</script>  
+<script type="text/javascript" src="/static/app/app.module.js" th:src="@{/app/app.module.js}"></script>
+<script type="text/javascript" src="/static/app/bookings.controller.js" th:src="@{/app/bookings.controller.js}"></script>
+
+</head>
+
+
+
+<body  ng-app="myapp" ng-controller="myappcontroller" >
+
+	<!-- Header -->	
+<div class="agileits_header">
+		
+		
+		<div class="product_list_header">  
+			
+		</div>
+		<div class="w3l_header_right">
+			<span style="font-color:white;" th:utext="${userName}"></span>
+			<form th:action="@{/logout}" method="get">
+			<button class="btn btn-danger " name="registration"
+				type="Submit"  style="right: 0px; top: 30px;">Logout</button>
+		    </form>
+		</div>
+		<div class="w3l_header_right1">
+			<!--
+			<h2><a href="mail.html">Contact Us</a></h2>
+			-->
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+	<!-- script-for sticky-nav -->
+	<script>
+	$(document).ready(function() {
+		 var navoffeset=$(".agileits_header").offset().top;
+		 $(window).scroll(function(){
+			var scrollpos=$(window).scrollTop(); 
+			if(scrollpos >=navoffeset){
+				$(".agileits_header").addClass("fixed");
+			}else{
+				$(".agileits_header").removeClass("fixed");
+			}
+		 });
+		 
+	});
+	</script>
+<!-- //script-for sticky-nav -->
+	
+
+
+<div class="logo_products">
+		<div class="container">
+			<div class="w3ls_logo_products_left">
+				<h1><a href="/Driver/home"><img th:src="@{/images/pnplogo.png}" alt="Pick n Pay"></a></h1>  
+			</div>
+			<div class="w3ls_logo_products_left1">
+				<ul class="special_items">
+					 <li><a href="/Driver/delivery">Delivery</a></li>
+                     <li><a href="/Driver/DriverInfo">Profile</a></li>
+                     
+				</ul>
+			</div>
+			<div class="w3ls_logo_products_left1">
+				<ul class="phone_email">
+					<!--
+					<li><i class="fa fa-phone" aria-hidden="true"></i>(+0123) 234 567</li>
+					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:info@pnp.com">info@pnp.co.za</a></li>
+					-->
+				</ul>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+<!-- //header -->
+		  	
+	
+			  
+		
+
+
+<div align = "center" class="table-responsive">
+
+
+<div>  </div>
+
+
+
+<h3>Update License </h3>
+	<form ng-submit="AddCustomer">
+		<div class="table-responsive">
+			<table class="table table-striped" style="width: 600px">
+			   <tr>
+					<td>License Code</td>
+			        <td>		
+				     <select ng-model = "LicenseCode" >
+				        <option  value= "Code 8">Code 8</option>
+				        <option  value= "Code 10">Code 10</option>
+				        <option value="Code 14" >Code 14</option>
+					 </select>
+					</td>
+			   </tr>
+                <tr>
+					<td>exp-date</td>
+					<td><input type="date" id="expDate"
+						ng-model="DriverForm.license_exp_date" size="30" /></td>
+				</tr>
+				<tr>
+					<td align = "right" colspan="2"> <input type="submit"
+						class="btn btn-primary btn-sm" ng-click="AddDriver(LicenseCode)"
+						value="Add/Update" /> </td>
+				</tr>
+
+		</table>
+		</div>
+	</form>
+
+
+
+
+<br>
+		<table class="table table-bordered" style="width: 600px;">
+			
+			<tr>
+			<th>license_code</th>
+		    <th>license_exp_date</th>
+			</tr>
+
+			<tr ng-repeat="Drivers in Driver ">
+				<td>{{ 	Drivers.license_code }}</td>
+				<td>{{ Drivers.license_exp_date}}</td>
+			</tr>
+		</table>
+	</div>
+
+
+
+</body>
+
+
+</html>

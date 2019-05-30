@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Pick n Pay | Checkout</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="pnp online shopping." />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+	<!-- //for-mobile-apps -->
+<link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all" />
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all" />
+
+	<!-- font-awesome icons -->
+<link th:href="@{/css/font-awesome.css}" rel="stylesheet" type="text/css" media="all" /> 
+
+	<!-- //font-awesome icons -->
+
+	<!-- js -->
+<script th:src="@{/js/jquery-1.11.1.min.js}"></script>
+
+	<!-- //js -->
+<link th:href='@{//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic}' rel='stylesheet' type='text/css'>
+<link th:href='@{//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic}' rel='stylesheet' type='text/css'>
+
+	<!-- start-smoth-scrolling -->
+<script type="text/javascript" th:src="@{/js/move-top.js}"></script>
+<script type="text/javascript" th:src="@{/js/easing.js}"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- start-smoth-scrolling --> 
+</head>
+
+<!-- - -->
+<link rel="stylesheet" type="text/css" th:href="@{/css/tab.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+ <link th:if="${mode == 'development'}" rel="stylesheet" href="../static/bootstrap.css" th:href="@{/bootstrap.css}" />
+    <link th:if="${mode == 'production'}" rel="stylesheet" href="../static/bootstrap.min.css" th:href="@{/bootstrap.min.css}" />
+    <script type="text/javascript" src="/static/angular.min.js" th:src="@{/angular.min.js}"></script>
+     <!--  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>--> 
+     
+	<script type="text/javascript">"src/main/resources/static/app/bookings.controller.js"</script>  
+    <script type="text/javascript" src="/static/app/app.module.js" th:src="@{/app/app.module.js}"></script>
+    <script type="text/javascript" src="/static/app/bookings.controller.js" th:src="@{/app/bookings.controller.js}"></script>
+
+
+
+</head>
+
+
+
+<body ng-app="myapp" ng-controller="myappcontroller">
+
+<!-- Header -->	
+<div class="agileits_header">
+		<div class="w3l_offers">
+			<a th:href="@{/customer/shop}">Start Shopping...</a>
+		</div>
+		<div class="w3l_search">
+			
+		</div>
+		<div class="product_list_header">  
+			<form  >
+                
+            </form>
+		</div>
+		<div class="w3l_header_right">
+			<span style="font-color:white;" th:utext="${userName}"></span>
+			<form th:action="@{/logout}" method="get">
+			<button class="btn btn-danger " name="registration"
+				type="Submit"  style="right: 0px; top: 30px;">Logout</button>
+		    </form>
+		</div>
+		<div class="w3l_header_right1">
+			<!--
+			<h2><a href="mail.html">Contact Us</a></h2>
+			-->
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+	<!-- script-for sticky-nav -->
+	<script>
+	$(document).ready(function() {
+		 var navoffeset=$(".agileits_header").offset().top;
+		 $(window).scroll(function(){
+			var scrollpos=$(window).scrollTop(); 
+			if(scrollpos >=navoffeset){
+				$(".agileits_header").addClass("fixed");
+			}else{
+				$(".agileits_header").removeClass("fixed");
+			}
+		 });
+		 
+	});
+	</script>
+<!-- //script-for sticky-nav -->
+	
+
+
+<div class="logo_products">
+		<div class="container">
+			<div class="w3ls_logo_products_left">
+				<h1><a href="/customer/home"><img th:src="@{/images/pnplogo.png}" alt="Pick n Pay"></a></h1>  
+			</div>
+			<div class="w3ls_logo_products_left1">
+				<ul class="special_items">
+					 <li><a href="/customer/shop">CATERGORIES</a></li>
+                     <li><a href="/customer/browse">SHOP</a></li>
+  					 <li><a href="/customer/CustomerInfo">PROFILE</a></li>
+  					
+  					 <li><a href="/customer/basket"> <img th:src="@{/images/bas.png} " > {{ Carts.length}}</a>
+				</ul>
+			</div>
+			<div class="w3ls_logo_products_left1">
+				<ul class="phone_email">
+					<!--
+					<li><i class="fa fa-phone" aria-hidden="true"></i>(+0123) 234 567</li>
+					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:info@pnp.com">info@pnp.co.za</a></li>
+					-->
+				</ul>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+<!-- //header -->
+
+
+
+
+	
+	<form ng-submit="AddPayment">
+		<div  class="container">
+		
+		
+		<center>
+		<h3>PAYMENT</h3>
+		</center>
+			<table  class="table table-info" style="width: 1000px;">
+				<tr>
+					<td>Card Number</td>
+					<td><input type="number" id="cardNumber" class="form-control"
+						ng-model="Paymentform.cardNumber" size="" /></td>
+				</tr>
+				
+
+                <tr>
+			    <td>Card type</td>
+			    <td>		
+				<select ng-model = "CardType" class="form-control">
+				        <option value= "Visa">Visa</option>
+				        <option value="MasterCard" >Master Card</option>
+				        <option value="Discover" >Discover</option>
+			    </select>
+			    </td>
+				</tr>
+				<tr>
+					<td>CVV2</td>
+					<td><input type="number" id="cvv2" class="form-control"
+						ng-model="Paymentform.cvv2" size="30" /></td>
+				</tr>
+                <tr>
+					<td>exp-date</td>
+					<td><input type="date" id="expDate" class="form-control"
+						ng-model="Paymentform.expDate" size="30" /></td>
+				</tr>
+	            <tr>
+					<td align = "right" colspan="2"> <input type="submit"
+						class="btn btn-primary btn-sm" ng-click="AddPayment(CardType)"
+						value="Checkout" /> </td>
+				</tr>
+
+		</table>
+		</div>
+	</form>
+	
+<!-- footer -->
+	<div class="footer">
+		<div class="container">
+			<div class="col-md-3 w3_footer_grid">
+				<h3>START SHOPPING</h3>
+				<ul class="w3_footer_grid_list">
+				   <li><a href="/customer/shop">SPECIALS</a></li>
+                     <li><a href="/customer/browse">SHOP</a></li>
+  					 <li><a href="/customer/CustomerInfo">PROFILE</a></li>
+  					 
+				</ul>
+			</div>
+			<div class="col-md-3 w3_footer_grid">
+				<h3>COMPANY</h3>
+				<ul class="w3_footer_grid_list">
+				    <li><a href="">FAQs</a></li>
+					<li><a href="">HELP</a></li>
+					<li><a href="">CONTACT US</a></li>
+					
+				</ul>
+			</div>
+			
+			
+			<div class="clearfix"> </div>
+			
+			<div class="wthree_footer_copy">
+				<p>© 2019 Pick n Pay All Rights Reserved | Online Shop Ts&Cs | Smart Shopper Ts&Cs | Privacy Policy | General Ts&Cs | Copyright | Returns Policy | CPA | Customer Communication | General Competition Ts&Cs</a></p>
+			</div>
+		</div>
+	</div>
+<!-- //footer -->
+</body>
+</html>
